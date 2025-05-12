@@ -2,15 +2,14 @@ using Godot;
 using System;
 
 public enum CharacterState { IDLE, MOVE, SHOOT }
-public enum Projectiles { BASIC, TRIPLE, THREESIXTY }
 public partial class Character : Entity
 {
     [Export] protected CharacterState state = CharacterState.IDLE;
-    [Export] protected Projectiles projectiles = Projectiles.BASIC;
     [Export] protected float shootSpeed = .5f;
     private float shootCounter = 0;
     [Export] protected int moveSpeed = 8;
     [Export] protected int currentMoveSpeed;
+    [Export] public PackedScene projectile;
 
     public override void _Ready()
     {
@@ -66,18 +65,12 @@ public partial class Character : Entity
     {
         if (shootCounter <= 0)
         {
-            switch (projectiles)
-            {
-                case Projectiles.BASIC:
-                    GD.Print($"{this.Name} shot a basic projectile.");
-                    break;
-                case Projectiles.TRIPLE:
-                    GD.Print($"{this.Name} shot a triple projectile.");
-                    break;
-                case Projectiles.THREESIXTY:
-                    GD.Print($"{this.Name} shot a 360 projectile.");
-                    break;
-            }
+            GD.Print($"{this.Name} shot a basic projectile.");
+
+            Area3D basicBullet = projectile.Instantiate<Area3D>();
+            GetTree().Root.CallDeferred("add_child", basicBullet);
+            basicBullet.CallDeferred("set", "global_position", this.GlobalPosition);
+            basicBullet.CallDeferred("set", "direction", direction);
 
             shootCounter = shootSpeed;
         }

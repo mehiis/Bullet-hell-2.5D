@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://1srkvhubvqtj"]
+[gd_scene load_steps=9 format=3 uid="uid://1srkvhubvqtj"]
 
 [ext_resource type="Script" uid="uid://4s2pg0dxofc7" path="res://Scripts/Player/Player.cs" id="1_cpr3h"]
 [ext_resource type="Texture2D" uid="uid://c3qespmnl3xmv" path="res://Sprites/Player.png" id="1_jt0pw"]
+[ext_resource type="PackedScene" uid="uid://y0s2y52j6h3p" path="res://Resources/Projectiles/projectile_basic.tscn" id="2_2buye"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jt0pw"]
 size = Vector3(0.639923, 0.836456, 0.564697)
@@ -38,6 +39,7 @@ animations = [{
 [node name="Player" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_cpr3h")
+projectile = ExtResource("2_2buye")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014801, 0.0168915, 0.0189209)

@@ -34,7 +34,17 @@ public partial class Player : Character
 	{
 		if (Input.IsActionPressed("Fire"))
 		{
-			Vector3 dir = Vector3.Zero;
+			Camera3D camera = GetViewport().GetCamera3D();
+
+			Vector2 mousePos = GetViewport().GetMousePosition();
+			Vector3 rayOrigin = camera.ProjectRayOrigin(mousePos);
+			Vector3 rayDirection = camera.ProjectRayNormal(mousePos);
+
+			Vector3? intersection = new Plane(Vector3.Up, 0).IntersectsRay(rayOrigin, rayDirection);
+
+			Vector3 dir = (intersection.Value - GlobalPosition).Normalized();
+			dir.Y = 0;
+
 			FireProjectile(dir);
 		}
 	}

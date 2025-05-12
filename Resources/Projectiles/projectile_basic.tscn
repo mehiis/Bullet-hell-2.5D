@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://y0s2y52j6h3p"]
+
+[ext_resource type="Script" uid="uid://borgyycradpd4" path="res://Scripts/Projectile.cs" id="1_7pymb"]
+[ext_resource type="Texture2D" uid="uid://cnanlxlxfvxvb" path="res://Sprites/Projectiles/projectile_1.png" id="2_j4lvl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gmfe"]
+size = Vector3(0.0820465, 0.453857, 0.0587158)
+
+[node name="Projectile(Basic)" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0107498, 0.00743008, -0.007864)
+script = ExtResource("1_7pymb")
+moveSpeed = 15.0
+lifeTime = 0.3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0018692, -0.00183105, -6.10352e-05)
+shape = SubResource("BoxShape3D_2gmfe")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.1
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_j4lvl")

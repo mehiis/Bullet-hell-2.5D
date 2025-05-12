@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 environment = SubResource("Environment_fiftr")
 fov = 55.0
 script = ExtResource("3_fiftr")
-offset = Vector3(0, 10, 10)
+offset = Vector3(0, 7, 7)
 lerpSpeed = 10.0
 minX = -10.0
 maxX = 16.0
@@ -68,8 +68,6 @@ maxZ = 27.5
 
 [node name="Player" parent="." instance=ExtResource("3_6h5vk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0727853, 0.520954, 0.00698083)
-shootSpeed = 1.0
-moveSpeed = 8
 
 [node name="Slime" parent="." instance=ExtResource("5_1ixah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.586, 0.538706, -0.0284481)

@@ -26,6 +26,7 @@ size = Vector3(13.7522, 4.25537, 13.1666)
 
 [node name="Slime" type="CharacterBody3D"]
 script = ExtResource("1_0ok38")
+shootSpeed = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rvij7")
