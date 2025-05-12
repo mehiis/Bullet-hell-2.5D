@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://1srkvhubvqtj"]
+
+[ext_resource type="Script" uid="uid://4s2pg0dxofc7" path="res://Scripts/Player/Player.cs" id="1_cpr3h"]
+[ext_resource type="Texture2D" uid="uid://c3qespmnl3xmv" path="res://Sprites/Player.png" id="1_jt0pw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jt0pw"]
+size = Vector3(0.639923, 0.836456, 0.564697)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpr3h"]
+atlas = ExtResource("1_jt0pw")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2buye"]
+atlas = ExtResource("1_jt0pw")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxkbv"]
+atlas = ExtResource("1_jt0pw")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1ew7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpr3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2buye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxkbv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[node name="Player" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_cpr3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014801, 0.0168915, 0.0189209)
+shape = SubResource("BoxShape3D_jt0pw")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.1
+billboard = 1
+double_sided = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_i1ew7")
+animation = &"Idle"
+frame_progress = 0.465934

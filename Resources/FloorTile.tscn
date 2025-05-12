@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b74toffwguxgl"]
+
+[ext_resource type="Script" uid="uid://b7befjn2cpfkd" path="res://Scripts/FloorTile.cs" id="1_0fx77"]
+[ext_resource type="Material" uid="uid://cbs7rwb6tnevi" path="res://Grass.tres" id="1_jfdyq"]
+[ext_resource type="PackedScene" uid="uid://r4wolyu8gw33" path="res://Resources/TileDecorations/dec-grass-1.tscn" id="2_0jsjt"]
+
+[node name="FloorTile" type="Node3D"]
+script = ExtResource("1_0fx77")
+grassDecorations = Array[PackedScene]([ExtResource("2_0jsjt")])
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = ExtResource("1_jfdyq")
+size = Vector3(1, 0.1, 1)
+material = ExtResource("1_jfdyq")

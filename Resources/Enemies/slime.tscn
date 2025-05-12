@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://0q2o1wc7exj"]
+
+[ext_resource type="Script" uid="uid://2475sj6r6dnd" path="res://Scripts/Enemy/EnemyAI.cs" id="1_0ok38"]
+[ext_resource type="Texture2D" uid="uid://cjemo5wwfuf54" path="res://icon.svg" id="1_rvij7"]
+[ext_resource type="Script" uid="uid://b81y1et6b837c" path="res://Scripts/Enemy/PlayerDetector.cs" id="3_pre80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvij7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ok38"]
+atlas = ExtResource("1_rvij7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pre80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ok38")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pre80"]
+size = Vector3(13.7522, 4.25537, 13.1666)
+
+[node name="Slime" type="CharacterBody3D"]
+script = ExtResource("1_0ok38")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rvij7")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+shaded = true
+sprite_frames = SubResource("SpriteFrames_pre80")
+
+[node name="PlayerDetector" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0994527, 2.38419e-06, 0.0015564)
+script = ExtResource("3_pre80")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146851, 1.62769, 0.079895)
+shape = SubResource("BoxShape3D_pre80")
+
+[connection signal="body_entered" from="PlayerDetector" to="PlayerDetector" method="OnTriggerEnter"]
+[connection signal="body_exited" from="PlayerDetector" to="PlayerDetector" method="OnTriggerExit"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://r4wolyu8gw33"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3cbv5bqyeykx" path="res://Models/dec-grass-1.obj" id="1_xjfg2"]
+[ext_resource type="Material" uid="uid://cbs7rwb6tnevi" path="res://Grass.tres" id="2_4luw8"]
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+gi_mode = 0
+calculate_tangents = false
+mesh = ExtResource("1_xjfg2")
+material = ExtResource("2_4luw8")
