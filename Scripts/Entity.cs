@@ -28,7 +28,7 @@ public partial class Entity : CharacterBody3D
 		currentHealth = healthTemp;
 	}
 
-	protected virtual void TakeDamage(int damageAmount)
+	public virtual void TakeDamage(int damageAmount)
 	{
 		int healthTemp = currentHealth;
 		healthTemp -= damageAmount;

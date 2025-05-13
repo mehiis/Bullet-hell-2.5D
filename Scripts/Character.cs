@@ -49,20 +49,31 @@ public partial class Character : Entity
 
         moveDir = moveDir.Normalized();
 
-        state = CharacterState.MOVE;
+        SetState(CharacterState.MOVE);
         Velocity = moveDir * currentMoveSpeed;
 
         if (Velocity == Vector3.Zero)
         {
-            state = CharacterState.IDLE;
+            SetState(CharacterState.IDLE);
             return;
         }
 
         MoveAndSlide();
     }
 
-    protected virtual void FireProjectile(Vector3 direction)
+    public virtual void SetState(CharacterState state)
     {
+        this.state = state;
+    }
+
+    protected virtual void FireProjectile(Vector3 direction, bool isPlayerProjectile = false)
+    {
+        if (projectile == null)
+        {
+            GD.PrintErr($"{Name} projectile reference is not set!");
+            return;
+        }
+
         if (shootCounter <= 0)
         {
             GD.Print($"{this.Name} shot a basic projectile.");
@@ -71,6 +82,7 @@ public partial class Character : Entity
             GetTree().Root.CallDeferred("add_child", basicBullet);
             basicBullet.CallDeferred("set", "global_position", this.GlobalPosition);
             basicBullet.CallDeferred("set", "direction", direction);
+            basicBullet.CallDeferred("set", "isPlayerProjectile", isPlayerProjectile);
 
             shootCounter = shootSpeed;
         }

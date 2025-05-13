@@ -45,7 +45,7 @@ public partial class Player : Character
 			Vector3 dir = (intersection.Value - GlobalPosition).Normalized();
 			dir.Y = 0;
 
-			FireProjectile(dir);
+			FireProjectile(dir, true);
 		}
 	}
 }

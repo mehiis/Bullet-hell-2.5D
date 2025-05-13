@@ -70,4 +70,5 @@ maxZ = 27.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0727853, 0.520954, 0.00698083)
 
 [node name="Slime" parent="." instance=ExtResource("5_1ixah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.586, 0.538706, -0.0284481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.819, 0.5, 0)
+shootSpeed = 1.0

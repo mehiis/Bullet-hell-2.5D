@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://0q2o1wc7exj"]
+[gd_scene load_steps=9 format=3 uid="uid://0q2o1wc7exj"]
 
-[ext_resource type="Script" uid="uid://2475sj6r6dnd" path="res://Scripts/Enemy/EnemyAI.cs" id="1_0ok38"]
+[ext_resource type="Script" uid="uid://b6vciy5n2qjru" path="res://Scripts/Enemy/Enemy.cs" id="1_010hp"]
 [ext_resource type="Texture2D" uid="uid://cjemo5wwfuf54" path="res://icon.svg" id="1_rvij7"]
+[ext_resource type="PackedScene" uid="uid://y0s2y52j6h3p" path="res://Resources/Projectiles/projectile_basic.tscn" id="2_t8t0c"]
 [ext_resource type="Script" uid="uid://b81y1et6b837c" path="res://Scripts/Enemy/PlayerDetector.cs" id="3_pre80"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rvij7"]
@@ -25,8 +26,10 @@ animations = [{
 size = Vector3(13.7522, 4.25537, 13.1666)
 
 [node name="Slime" type="CharacterBody3D"]
-script = ExtResource("1_0ok38")
+script = ExtResource("1_010hp")
 shootSpeed = 0.0
+moveSpeed = 5
+projectile = ExtResource("2_t8t0c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rvij7")
